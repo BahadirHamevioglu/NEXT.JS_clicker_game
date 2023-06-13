@@ -1,4 +1,3 @@
-"use client";
 import { numberConverter } from "@/libs/numberConverter";
 
 import styles from "./styles.module.scss";
@@ -6,7 +5,7 @@ import styles from "./styles.module.scss";
 import { useHomeContext } from "../../useHomeContext";
 
 function Wallet() {
-  let { balance, balanceState } = useHomeContext();
+  let { balanceState } = useHomeContext();
 
   return (
     <section className={styles.section}>

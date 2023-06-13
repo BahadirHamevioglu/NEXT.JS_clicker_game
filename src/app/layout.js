@@ -1,3 +1,4 @@
+"use client";
 import { INTER } from "@/libs/fonts";
 
 import "@/app/styles/reset.scss";

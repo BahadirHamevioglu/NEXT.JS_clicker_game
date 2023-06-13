@@ -14,16 +14,17 @@ export const HomeProvider = ({ children }) => {
   const [i, setI] = useLocalStorage("i", (1 + profit) * power);
 
   const [balanceState, setBalanceState] = useState(0);
+  const [profitState, setProfitState] = useState(0);
+  const [iState, setIState] = useState(i);
 
   useEffect(() => {
     if (upgrades.length === 0) {
       setUpgrades(MINES);
     }
-
-    if (balanceState === 0) {
-      setBalanceState(balance);
-    }
-  }, [balance, balanceState]);
+    setBalanceState(balance);
+    setProfitState(profit);
+    setIState(i);
+  }, [balance, balanceState, profit, profitState, iState]);
 
   const clickerButton = () => {
     setBalance((prev) => prev + i);
@@ -37,7 +38,7 @@ export const HomeProvider = ({ children }) => {
     console.log("Power up!");
   };
 
-  const purchaseUpgrade = (canPurchasable, price, id, isSacrifice) => {
+  const purchaseUpgrade = (canPurchasable, price, id) => {
     let upgrade = upgrades.find((upg) => upg.id === id);
 
     if (canPurchasable === true && balance >= price && balance - price >= 0) {
@@ -60,6 +61,7 @@ export const HomeProvider = ({ children }) => {
     }
 
     setI((1 + profit) * power);
+    setIState((1 + profit) * power);
   };
 
   const data = useMemo(() => {
@@ -72,9 +74,12 @@ export const HomeProvider = ({ children }) => {
       increasePower,
       i,
       purchaseUpgrade,
+
       balanceState,
+      profitState,
+      iState,
     };
-  }, [balance, profit, upgrades, power, i, balanceState]);
+  }, [balance, profit, upgrades, power, i, balanceState, profitState, iState]);
 
   return <HomeContext.Provider value={data}>{children}</HomeContext.Provider>;
 };
