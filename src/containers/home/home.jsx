@@ -1,4 +1,3 @@
-"use client";
 import Wallet from "./components/wallet";
 import Clicker from "./components/clicker";
 import Dashboard from "./components/dashboard";

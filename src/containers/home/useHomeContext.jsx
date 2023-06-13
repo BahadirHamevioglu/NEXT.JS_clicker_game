@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useMemo, createContext, useContext } from "react";
+import { useEffect, useMemo, createContext, useContext, useState } from "react";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
 
 import { MINES } from "@/libs/data";
@@ -13,14 +13,21 @@ export const HomeProvider = ({ children }) => {
   const [power, setPower] = useLocalStorage("power", 1);
   const [i, setI] = useLocalStorage("i", (1 + profit) * power);
 
+  const [balanceState, setBalanceState] = useState(0);
+
   useEffect(() => {
     if (upgrades.length === 0) {
       setUpgrades(MINES);
     }
-  }, []);
+
+    if (balanceState === 0) {
+      setBalanceState(balance);
+    }
+  }, [balance, balanceState]);
 
   const clickerButton = () => {
     setBalance((prev) => prev + i);
+    setBalanceState((prev) => prev + i);
   };
 
   const increasePower = () => {
@@ -65,8 +72,9 @@ export const HomeProvider = ({ children }) => {
       increasePower,
       i,
       purchaseUpgrade,
+      balanceState,
     };
-  }, [balance, profit, upgrades, power]);
+  }, [balance, profit, upgrades, power, i, balanceState]);
 
   return <HomeContext.Provider value={data}>{children}</HomeContext.Provider>;
 };

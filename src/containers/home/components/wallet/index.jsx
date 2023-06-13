@@ -6,14 +6,14 @@ import styles from "./styles.module.scss";
 import { useHomeContext } from "../../useHomeContext";
 
 function Wallet() {
-  const { balance } = useHomeContext();
+  let { balance, balanceState } = useHomeContext();
 
   return (
     <section className={styles.section}>
       <div className={styles.title}>Current balance</div>
       <div className={styles.balance}>
         <span>$</span>
-        {numberConverter(balance)}
+        {numberConverter(balanceState)}
       </div>
     </section>
   );
