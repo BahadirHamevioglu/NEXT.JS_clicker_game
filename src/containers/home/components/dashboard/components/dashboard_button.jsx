@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 import { numberConverter } from "@/libs/numberConverter";
 import { priceCalculator } from "@/libs/priceCalculator";
