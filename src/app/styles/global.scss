@@ -1,0 +1,15 @@
+body {
+  background-image: linear-gradient(to bottom, #5f4b4b, rgba(95, 75, 75, 0.85)),
+    url("/bg.jpg");
+  background-size: cover;
+  background-position: top;
+  padding-left: 24rem;
+  padding-right: 24rem;
+  min-height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: white;
+}

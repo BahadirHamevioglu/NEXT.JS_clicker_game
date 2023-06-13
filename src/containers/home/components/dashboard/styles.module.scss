@@ -1,0 +1,210 @@
+.section {
+  width: 100%;
+  position: relative;
+
+  .dashboard {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+
+    .dashboard_upgrade_button {
+      padding: 1rem;
+      backdrop-filter: blur(16px);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      border: 1px solid rgba(229, 231, 235, 0.25);
+      border-radius: 0.375rem;
+      overflow: hidden;
+
+      transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-start;
+      z-index: 99;
+
+      .dashboard_upgrade_button_texts {
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+        margin-left: 0.5rem;
+
+        .dashboard_upgrade_button_title {
+          font-size: 0.75rem;
+          line-height: 1rem;
+          color: rgba(255, 255, 255, 0.75);
+        }
+
+        .dashboard_upgrade_button_value {
+          font-size: 1.23rem;
+          line-height: 1.75rem;
+          font-weight: 800;
+        }
+      }
+
+      .dashboard_upgrade_button_image {
+        width: 64px;
+        height: 64px;
+        object-fit: cover;
+        position: relative;
+      }
+
+      .dashboard_upgrade_button_background_images {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+      }
+
+      .dashboard_upgrade_button_background_image {
+        filter: blur(24px);
+        &_top {
+          position: absolute;
+          top: -1.7rem;
+          left: -1.7rem;
+        }
+        &_bottom {
+          position: absolute;
+          bottom: -1.7rem;
+          right: -1.7rem;
+        }
+      }
+
+      .dashboard_upgrade_button_buy {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(27, 19, 19, 0.8);
+        opacity: 0;
+        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        z-index: 1;
+      }
+
+      &:hover {
+        border: 1px solid rgba(229, 231, 235, 0.5);
+        .dashboard_upgrade_button_buy {
+          opacity: 1;
+        }
+      }
+
+      &:active {
+        transform: scale(0.95);
+      }
+
+      &_disabled {
+        opacity: 0.5;
+      }
+
+      .dashboard_upgrade_button_upgrades {
+        position: absolute;
+        top: 0.5rem;
+        right: 0.5rem;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 0.5rem;
+
+        .dashboard_upgrade_button_quantity {
+          border-radius: 9999px;
+          --tw-bg-opacity: 1;
+          background-color: rgba(255, 255, 255, var(--tw-bg-opacity));
+          padding-left: 0.25rem;
+          padding-right: 0.25rem;
+          text-align: right;
+          font-size: 0.75rem;
+          line-height: 1rem;
+          --tw-text-opacity: 1;
+          color: rgba(0, 0, 0, var(--tw-text-opacity));
+        }
+
+        .dashboard_upgrade_button_sacrifice {
+          border-radius: 9999px;
+          --tw-bg-opacity: 1;
+          background-color: rgba(239, 68, 68, var(--tw-bg-opacity));
+          padding-left: 0.25rem;
+          padding-right: 0.25rem;
+          text-align: right;
+          font-size: 0.75rem;
+          line-height: 1rem;
+          --tw-text-opacity: 1;
+          color: rgba(255, 255, 255, var(--tw-text-opacity));
+        }
+      }
+
+      .dashboard_upgrade_button_sacrifice_button {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        bottom: 0;
+        left: 0;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+
+        z-index: 99;
+        background-image: linear-gradient(
+          to right,
+          #cf5c5c,
+          #c19b4a,
+          #def2a0,
+          #c6ee4a,
+          #42eca6,
+          #64b3d9,
+          #208ea2,
+          #498ada,
+          #5b73df,
+          #897ed3,
+          #cf5c5c,
+          #c19b4a
+        );
+        background-size: 1100% 100%;
+        animation: gradient 3s linear infinite;
+        transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+
+        &_title {
+          font-size: 0.75rem;
+          line-height: 1rem;
+          font-weight: 600;
+          text-transform: uppercase;
+        }
+
+        &_value {
+          font-size: 1rem;
+          line-height: 1.75rem;
+          font-weight: 800;
+          text-transform: uppercase;
+        }
+      }
+    }
+  }
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
